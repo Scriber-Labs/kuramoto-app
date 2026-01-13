@@ -1,14 +1,23 @@
 [project]
-name = "streamlit-template"
+name = "kuramoto-app"
 version = "0.1.0"
-description = "Personal Streamlit app template"
-requires-python = ">=3.10"
+description = "Streamlit app for visualizing the Kuramoto model."
+requires-python = ">=3.11"
 dependencies = [
-    "streamlit",
+    "streamlit>=1.44.1",
+    "ipython>=9.1.0",
+    "matplotlib>=3.10.1",
+    "networkx>=3.4.2",
+    "numpy>=2.2.4",
+    "pandas>=2.2.3",
+    "plotly>=6.0.1",
+    "scipy>=1.15.2",
+    "sqlalchemy>=2.0.40",
+    "trafilatura>=2.0.0",
 ]
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
@@ -16,3 +25,6 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "mypy", "pre-commit", "ipykernel"]
