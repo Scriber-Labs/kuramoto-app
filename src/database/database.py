@@ -15,7 +15,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
 # Create the engine and base
-DATABASE_URL = "sqlite:///kuramoto_simulations.db"
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///kuramoto_simulations.db")
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 engine = create_engine(DATABASE_URL)
 Base = declarative_base()
 
